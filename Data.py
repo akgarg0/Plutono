@@ -1,7 +1,7 @@
 import datetime as dt
 
-markets = ("AAPL","", "002502.SZ", "LNVGY", "APH", "DIOD", "INTC", "HPQ", "DELL", "SNE")
-# Apple, Samsung, Huawei, Amphenol, Diodes Inc, Intel, HP, Dell, Sony
+markets = ("AAPL", "LNVGY", "APH", "DIOD", "INTC", "HPQ", "DELL", "SNE")
+# Apple, Huawei, Amphenol, Diodes Inc, Intel, HP, Dell, Sony
 
 data_folder = "markets/"
 deviated_name = "_deviated"
