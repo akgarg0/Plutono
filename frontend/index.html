@@ -24,8 +24,154 @@
 </nav>
 <section class="content home">
     <div class="block-header">
-
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="container1" style="height: 400px; margin: 0 auto"></div>
+            </div>
+            <div class="col-sm-6">
+                <div id="container2" style="height: 400px; margin: 0 auto"></div>
+            </div>
+        </div>
     </div>
 </section>
 </body>
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+<script src="assets/plugins/momentjs/moment.js"></script> <!-- Moment Plugin Js -->
+<script src="assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/plugins/jquery-sparkline/jquery.sparkline.js"></script> <!-- Sparkline Plugin Js -->
+<script src="assets/plugins/jquery-countto/jquery.countTo.js"></script> <!-- Jquery CountTo Plugin Js -->
+<!--<script src="assets/bundles/morrisscripts.bundle.js"></script>-->
+<script src="assets/plugins/jquery-knob/jquery.knob.min.js"></script> <!-- Jquery Knob Plugin Js -->
+<script src="assets/plugins/aos-animation/aos.js"></script> <!-- AOS Animation -->
+<script src="assets/plugins/dropzone/dropzone.js"></script> <!-- Dropzone Plugin Js -->
+<script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+<script src="assets/js/pages/maps/jvectormap.js"></script>
+<script src="assets/js/pages/charts/jquery-knob.js"></script>
+<!--<script src="assets/js/pages/lightening/dist/lcjs.iife.js"></script>-->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script type="text/javascript">
+Highcharts.getJSON(
+    'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/usdeur.json',
+    function (data) {
+        Highcharts.chart('container1', {
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'USD to EUR exchange rate over time'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: 'USD to EUR',
+                data: data
+            }]
+        });
+        Highcharts.chart('container2', {
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'USD to EUR exchange rate over time'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: 'USD to EUR',
+                data: data
+            }]
+        });
+    }
+);
+</script>
 </html>
