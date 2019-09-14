@@ -39,3 +39,5 @@ def predict_data():
     result['high'] = reqd_data[0] + res['highd']
     result['low'] = reqd_data[0] + res['lowd']
     return jsonify(result)
+
+app.run()
