@@ -1,9 +1,8 @@
-from sklearn.linear_model import Ridge, LinearRegression
+from sklearn.linear_model import Ridge
 from sklearn.svm import LinearSVR, SVR
 from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
 import math
 import pandas as pd
-import numpy as np
 import pickle
 from sklearn.metrics import mean_squared_error
 import xgboost
@@ -14,6 +13,7 @@ generic_dataset = pd.DataFrame(data=None,
                                         'mean_sentiment',
                                         'std_sentiment', 'prev_close', 'opend', 'highd', 'lowd', 'closed',
                                         'target'])
+
 generic_train_dataset, generic_test_dataset = train_test_split(generic_dataset, test_size=0.25)
 
 
