@@ -40,4 +40,4 @@ def predict_data():
     result['low'] = reqd_data[0] + res['lowd']
     return jsonify(result)
 
-app.run()
+app.run(host="0.0.0.0", port=5000)
