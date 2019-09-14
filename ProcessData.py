@@ -40,5 +40,4 @@ def get_deviations(symbol):
     writer.writeheader()
     for row in new_data:
         writer.writerow(row)
-
     file_obj.close()
