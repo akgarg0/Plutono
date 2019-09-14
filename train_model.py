@@ -9,10 +9,9 @@ import xgboost
 from sklearn.model_selection import train_test_split
 
 generic_dataset = pd.DataFrame(data=None,
-                               columns=['month', 'day_of_week', 'week_no', 'week_day', 'week_of_year',
-                                        'mean_sentiment',
-                                        'std_sentiment', 'prev_close', 'opend', 'highd', 'lowd', 'closed',
-                                        'target'])
+                               columns=['month', 'day_of_week', 'week_no', 'week_day', 'week_of_year', 'day_of_year',
+                                        'mean_sentiment', 'std_sentiment', 'prev_close', 'opend', 'highd', 'lowd',
+                                        'closed', 'target'])
 
 generic_train_dataset, generic_test_dataset = train_test_split(generic_dataset, test_size=0.25)
 
@@ -115,6 +114,7 @@ class GradientBoostedTreeModels(Train):
 
 
 if __name__ == '__main__':
+
     models = [RidgeModels(), GradientBoostedTreeModels(), SVMModels(), RandomForestModels()]
     for m in models:
         m.train()
