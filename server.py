@@ -8,6 +8,7 @@ from HistoricalData import download_market_data
 import pickle
 import numpy as np
 
+
 def to_timestamp(dt):
     epoch = datetime.datetime.utcfromtimestamp(0)
     return (dt - epoch).total_seconds() * 1000
@@ -69,12 +70,13 @@ app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
+
 @app.route('/get_data', methods=['GET'])
 def get_data():
     data = pd.read_csv('markets/AAPL.csv')
     new_data = pd.DataFrame(None, columns=data.columns)
     start_date = request.args.get('start')
-    end_date = request.args.get('start')
+    end_date = request.args.get('end')
 
     for index, row in new_data.iterrows():
         if row['Date'] < start_date:
@@ -83,7 +85,16 @@ def get_data():
             return new_data.to_json()
         else:
             new_data.append(row)
-    return new_data.to_json()
+    high = []
+    low = []
+    open = []
+    close = []
+    for index, row in new_data.iterrows():
+        high.append(row['High'])
+        low.append(row['Low'])
+        open.append(row['Open'])
+        close.append(row['Close'])
+    return jsonify({'Open': open, 'Close': close, 'High': high, 'Low': low})
 
 
 @app.route('/predict', methods=['GET'])
