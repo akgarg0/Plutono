@@ -6,3 +6,4 @@ flask
 matplotlib
 scikit-learn
 apscheduler
+flask-cors

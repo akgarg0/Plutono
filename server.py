@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
 from predict import predict_price
 import datetime
@@ -6,7 +7,6 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from HistoricalData import download_market_data
 import pickle
 import numpy as np
-
 
 def to_timestamp(dt):
     epoch = datetime.datetime.utcfromtimestamp(0)
@@ -66,7 +66,8 @@ scheduler.add_job(func=update_data, trigger="interval", days=1,
                   next_run_time=datetime.datetime.now() + datetime.timedelta(days=1))
 scheduler.start()
 app = Flask(__name__)
-
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/foo": {"origins": "http://localhost:port"}})
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
