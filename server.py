@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from flask_cors import CORS
 import pandas as pd
 from predict import predict_price
@@ -66,10 +66,13 @@ scheduler = BackgroundScheduler()
 scheduler.add_job(func=update_data, trigger="interval", days=1,
                   next_run_time=datetime.datetime.now() + datetime.timedelta(days=1))
 scheduler.start()
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
+@app.route('/', methods=['GET'])
+def root():
+    return render_template('index.html')
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
