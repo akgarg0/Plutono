@@ -1,0 +1,35 @@
+{
+    "name": "@arction/lcjs",
+    "version": "1.0.0",
+    "description": "A high-performance charting library.",
+    "keywords": [
+        "Arction",
+        "chart",
+        "data",
+        "lightning",
+        "visualization",
+        "xy"
+    ],
+    "homepage": "https://www.arction.com/lightningchart-js/",
+    "license": "SEE LICENSE IN LICENSE",
+    "author": "Arction Ltd.",
+    "files": [
+        "dist/lcjs.d.ts",
+        "dist/lcjs.iife.js",
+        "dist/lcjs.js",
+        "LICENSE",
+        "package.json"
+    ],
+    "main": "dist/lcjs.js",
+    "types": "dist/lcjs.d.ts",
+    "dependencies": {
+        "@arction/eventer": "^1.0.0",
+        "collections": "git+https://github.com/montagejs/collections.git",
+        "crc": "^3.8.0",
+        "immutable": "^4.0.0-rc.12"
+    },
+    "publishConfig": {
+        "tag": "beta"
+    },
+    "iife": "dist/lcjs.iife.js"
+}
