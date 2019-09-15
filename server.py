@@ -113,7 +113,6 @@ def predict_data():
     result['close'] = reqd_data[0] + res['closed']
     result['high'] = reqd_data[0] + res['highd']
     result['low'] = reqd_data[0] + res['lowd']
-    result.headers.add('Access-Control-Allow-Origin', '*')
     return jsonify(result)
 
 
