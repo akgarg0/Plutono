@@ -5,4 +5,3 @@ flask
 matplotlib
 scikit-learn
 apscheduler
-python-tk
