@@ -1,6 +1,7 @@
 pandas
 xgboost
 pandas
+pandas-datareader
 flask
 matplotlib
 scikit-learn
