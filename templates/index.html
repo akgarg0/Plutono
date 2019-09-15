@@ -123,12 +123,17 @@
             }
         });
         $("#dateVal").on('change', () => {
-            console.log(new Date($("#dateVal").val()).getDay());
             if (new Date($("#dateVal").val()).getDay() == 6 || new Date($("#dateVal").val()).getDay() == 0) {
                 alert("Market is closed on this date. Please check with Week days");
                 return false;
             }
             $.ajax({
+            statusCode: {
+                500: function() {
+                    alert("SORRY!!! No dataset present on this Date");
+                    return false;
+                }
+            },
             url: "http://104.211.209.253:5000/predict?date="+$("#dateVal").val(),
             type: "GET",
             success: function (suc) {
