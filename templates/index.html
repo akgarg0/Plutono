@@ -123,7 +123,8 @@
             }
         });
         $("#dateVal").on('change', () => {
-            if (new Date($("#dateVal").val()).getDay() == 6 || new Date($("#dateVal").val()).getDay() == 7) {
+            console.log(new Date($("#dateVal").val()).getDay());
+            if (new Date($("#dateVal").val()).getDay() == 6 || new Date($("#dateVal").val()).getDay() == 0) {
                 alert("Market is closed on this date. Please check with Week days");
                 return false;
             }
