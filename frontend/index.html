@@ -58,6 +58,18 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url: "http://104.211.209.253:5000/predict?date=2019-09-11",
+            type: "GET",
+            success: function(suc){
+                console.log(suc);
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    });
 Highcharts.getJSON(
     'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/usdeur.json',
     function (data) {
