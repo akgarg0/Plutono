@@ -68,6 +68,23 @@ scheduler.start()
 app = Flask(__name__)
 
 
+@app.route('/get_data', methods=['GET'])
+def get_data():
+    data = pd.read_csv('markets/AAPL.csv')
+    new_data = pd.DataFrame(None, columns=data.columns)
+    start_date = request.args.get('start')
+    end_date = request.args.get('start')
+
+    for index, row in new_data.iterrows():
+        if row['Date'] < start_date:
+            continue
+        elif row['Date'] > end_date:
+            return new_data.to_json()
+        else:
+            new_data.append(row)
+    return new_data.to_json()
+
+
 @app.route('/predict', methods=['GET'])
 def predict_data():
     date = request.args.get('date')
